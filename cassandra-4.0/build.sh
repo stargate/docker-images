@@ -18,7 +18,7 @@ cd -P -- "$(dirname -- "$0")" # switch to this dir
 # --build-arg VERSION=${stargate_version} \
 # --tag ${DOCKER_IMAGE}:${stargate_version} \
 # --file Dockerfile \
-# --platform linux/amd64,linux/arm64 .
+# --platform linux/amd64 .
 
 # echo "Inspecting $DOCKER_IMAGE"
 # docker buildx imagetools inspect ${DOCKER_IMAGE}:${stargate_version}
