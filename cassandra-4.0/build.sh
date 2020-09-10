@@ -9,6 +9,8 @@ fi
 stargate_version=$1
 DOCKER_IMAGE=stargateio/stargate-4_0
 
+cd -P -- "$(dirname -- "$0")" # switch to this dir
+
 # TODO: Uncomment once persistence-extensions are added
 
 # echo "Building $DOCKER_IMAGE"
