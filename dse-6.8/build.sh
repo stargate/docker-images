@@ -13,7 +13,7 @@ DOCKER_IMAGE=stargateio/stargate-dse-68
 
 # echo "Building $DOCKER_IMAGE"
 # docker buildx build --push \
-# --build-arg VERSION=${VERSION} \
+# --build-arg VERSION=${stargate_version} \
 # --tag ${DOCKER_IMAGE}:${stargate_version} \
 # --file Dockerfile \
 # --platform linux/amd64,linux/arm64 .
