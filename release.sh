@@ -8,7 +8,7 @@ fi
 
 stargate_version=$1
 
-for script in $(find ../.. -type f -name 'build.sh'); do
+for script in $(find . -type f -name 'build.sh'); do
     echo "Executing $script"
     bash "$script" -H || break
 
