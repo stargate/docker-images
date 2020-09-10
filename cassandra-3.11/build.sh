@@ -9,6 +9,8 @@ fi
 stargate_version=$1
 DOCKER_IMAGE=stargateio/stargate-3_11
 
+cd -P -- "$(dirname -- "$0")" # switch to this dir
+
 echo "Building $DOCKER_IMAGE"
 docker buildx build --push \
 --build-arg VERSION=${stargate_version} \
