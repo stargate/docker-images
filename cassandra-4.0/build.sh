@@ -15,7 +15,6 @@ cd -P -- "$(dirname -- "$0")" # switch to this dir
 
 # echo "Building $DOCKER_IMAGE"
 # docker buildx build --push \
-# --build-arg VERSION=${stargate_version} \
 # --tag ${DOCKER_IMAGE}:${stargate_version} \
 # --file Dockerfile \
 # --platform linux/amd64 .

@@ -1,6 +1,6 @@
 FROM openjdk:8u252-slim
 
-ARG VERSION
+ARG VERSION=v0.0.5
 
 RUN apt update && apt install curl unzip iproute2 libaio1 -y
 RUN curl -L https://github.com/stargate/stargate/releases/download/${VERSION}/stargate-jars.zip > stargate-jars.zip
