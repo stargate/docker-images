@@ -4,6 +4,7 @@ set -euo pipefail
 
 if [ -z ${1+x} ]; then 
    echo "stargate version is a required argument"
+   exit 1
 fi
 
 stargate_version=$1
