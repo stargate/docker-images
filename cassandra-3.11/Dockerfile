@@ -5,7 +5,8 @@ ARG STARGATE_VERSION=v0.0.12
 RUN apt update && apt install curl unzip iproute2 libaio1 -y
 RUN curl -L https://github.com/stargate/stargate/releases/download/${STARGATE_VERSION}/stargate-jars.zip > stargate-jars.zip
 
-RUN unzip stargate-jars
+RUN unzip stargate-jars -x "*/persistence-*"
+RUN unzip stargate-jars "*/persistence-cassandra-3.11*"
 
 RUN chmod +x starctl
 ENTRYPOINT ["./starctl"]
