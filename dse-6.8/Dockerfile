@@ -6,6 +6,7 @@ RUN apt update && apt install curl unzip iproute2 libaio1 -y
 RUN curl -sL https://github.com/stargate/stargate/releases/download/${STARGATE_VERSION}/stargate-jars.zip > stargate-jars.zip
 
 RUN unzip stargate-jars -x "*/persistence-*"
+RUN unzip stargate-jars "*/persistence-api*"
 RUN unzip stargate-jars "*/persistence-dse-6.8*"
 
 RUN chmod +x starctl
