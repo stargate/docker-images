@@ -51,7 +51,7 @@ services:
       - 9045:9042
     mem_limit: 2G
     environment:
-      - JAVA_OPTS="-Xmx4G"
+      - JAVA_OPTS="-Xmx2G"
       - CLUSTER_NAME=backend
       - CLUSTER_VERSION=3.11
       - SEED=backend-1

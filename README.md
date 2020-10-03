@@ -27,7 +27,7 @@ Correct settings in the `environment` section are essential for successful Starg
 
 ### Starting
 
-Backend (C* or DSE) will not start immediately after containter is up.
+Backend (C* or DSE) will not start immediately after container is up.
 This can lead to some potential issue with backend not being ready during stargate start. 
 ```
 docker-compose --file <compose-file.yml> up
