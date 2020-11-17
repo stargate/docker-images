@@ -73,7 +73,7 @@ services:
       - 9090:9090
     mem_limit: 2G
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:latest
     container_name: grafana
     depends_on: 
       - backend-1
