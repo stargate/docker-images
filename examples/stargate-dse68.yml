@@ -66,5 +66,6 @@ services:
       - SEED=backend-1
       - RACK_NAME=rack1
       - DATACENTER_NAME=dc1
+      - ENABLE_AUTH=true
 networks:
   backend:
