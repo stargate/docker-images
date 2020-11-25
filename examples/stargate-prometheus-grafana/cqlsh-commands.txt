@@ -1,5 +1,7 @@
 backend-1
 docker run --rm -it nuvo/docker-cqlsh cqlsh host.docker.internal 9044 --cqlversion=3.4.4
+or
+docker-compose exec backend-1 cqlsh -u cassandra -p cassandra
 
 stargate:
 docker run --rm -it nuvo/docker-cqlsh cqlsh host.docker.internal 9045 --cqlversion=3.4.5 -u cassandra -p cassandra

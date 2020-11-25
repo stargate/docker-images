@@ -72,6 +72,8 @@ services:
     ports:
       - 9090:9090
     mem_limit: 2G
+    volumes:
+      - ${PWD}/prometheus:/etc/prometheus
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
