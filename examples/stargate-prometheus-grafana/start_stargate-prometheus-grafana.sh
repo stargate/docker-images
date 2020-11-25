@@ -8,9 +8,11 @@ docker-compose up -d backend-1
 (docker-compose logs -f backend-1 &) | grep -q "Created default superuser role"
 
 # Bring up the 2nd C* node
-(docker-compose logs -f backend-1 &) | grep -q "is now part of the cluster"
+#docker-compose up -d backend-2
+#(docker-compose logs -f backend-1 &) | grep -q "is now part of the cluster"
 # Bring up the 3rd C* node
-(docker-compose logs -f backend-1 &) | grep -q "is now part of the cluster"
+#docker-compose up -d backend-3
+#(docker-compose logs -f backend-1 &) | grep -q "is now part of the cluster"
 
 # Bring up the stargate
 docker-compose up -d stargate
