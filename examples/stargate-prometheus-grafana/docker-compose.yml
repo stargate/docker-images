@@ -72,8 +72,10 @@ services:
     ports:
       - 9090:9090
     mem_limit: 2G
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
     volumes:
-      - ${PWD}/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ${PWD}/prometheus.yml:/etc/prometheus/prometheus.yml:ro
   grafana:
     image: grafana/grafana:latest
     container_name: grafana

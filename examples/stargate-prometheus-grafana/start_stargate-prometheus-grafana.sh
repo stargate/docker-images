@@ -5,7 +5,7 @@
 # Make sure backend-1, the seed node, is up before bringing up other nodes and stargate
 docker-compose up -d backend-1
 # Wait until the seed node is up before bringing up more nodes
-(docker-compose logs -f backend-1 &) | grep -q "is now part of the cluster"
+(docker-compose logs -f backend-1 &) | grep -q "Created default superuser role"
 
 # Bring up the 2nd C* node
 (docker-compose logs -f backend-1 &) | grep -q "is now part of the cluster"
