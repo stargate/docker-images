@@ -14,6 +14,9 @@ docker-compose -f stargate-cass311-jwt.yml up -d cass-2
 #docker-compose -f stargate-cass311-jwt.yml up -d cass-3
 #(docker-compose logs -f cass-1 &) | grep -q "is now part of the cluster"
 
+# Bring up keycloak
+docker-compose -f stargate-cass311-jwt.yml up -d keycloak
+
 # Bring up the stargate
 docker-compose -f stargate-cass311-jwt.yml up -d stargate-jwt
 # Wait until stargate is up before bringing up the metrics tools
@@ -24,5 +27,3 @@ while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8082/healt
     sleep 5
 done
 
-# Bring up keycloak
-docker-compose -f stargate-cass311-jwt.yml up -d keycloak
