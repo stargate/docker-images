@@ -1,0 +1,82 @@
+version: '2'
+
+services:
+  cass-1:
+    image: cassandra:3.11.8
+    container_name: cass-1
+    networks:
+      - backend2
+    ports:
+      - 9044:9042
+    mem_limit: 2G
+    environment:
+      - HEAP_NEWSIZE=128M
+      - MAX_HEAP_SIZE=1024M
+      - CASSANDRA_SEEDS=cass-1
+      - CASSANDRA_CLUSTER_NAME=backend-cluster
+  cass-2:
+    image: cassandra:3.11.8
+    container_name: cass-2
+    networks:
+      - backend2
+    mem_limit: 2G
+    depends_on:
+      - cass-1
+    environment:
+      - HEAP_NEWSIZE=128M
+      - MAX_HEAP_SIZE=1024M
+      - CASSANDRA_SEEDS=cass-1
+      - CASSANDRA_CLUSTER_NAME=backend-cluster
+  cass-3:
+    image: cassandra:3.11.8
+    container_name: cass-3
+    networks:
+      - backend2
+    mem_limit: 2G
+    depends_on:
+      - cass-1
+    environment:
+      - HEAP_NEWSIZE=128M
+      - MAX_HEAP_SIZE=1024M
+      - CASSANDRA_SEEDS=cass-1
+      - CASSANDRA_CLUSTER_NAME=backend-cluster
+  stargate-jwt:
+    image: jwt-sg:latest
+    container_name: stargate-jwt
+    depends_on: 
+      - cass-1
+    networks:
+      - backend2
+    ports:
+      - 8080:8080
+      - 8081:8081
+      - 8082:8082
+      - 8085:8085
+      - 9045:9042
+    mem_limit: 2G
+    environment:
+      - JAVA_OPTS="-XX:+CrashOnOutOfMemoryError -Xmx750M -Xms64M -Dstargate.auth_id=AuthJwtService -Dstargate.auth.jwt_provider_url=http://localhost:4444/auth/realms/stargate/protocol/openid-connect/certs"
+      - CLUSTER_NAME=backend-cluster
+      - CLUSTER_VERSION=3.11
+      - SEED=cass-1
+      - RACK_NAME=rack1
+      - DATACENTER_NAME=dc1
+      - ENABLE_AUTH=true
+      - SIMPLE_SNITCH=true
+  keycloak:
+    image: quay.io/keycloak/keycloak:11.0.2
+    container_name: keycloak
+    networks:
+      - backend2
+    ports:
+      - 4444:4444
+      - 9990:9990
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+      - KEYCLOAK_IMPORT=/tmp/stargate-realm.json
+      - JAVA_OPTS="-Djboss.http.port=4444"
+    volumes:
+      - ./stargate-realm.json:/tmp/stargate-realm.json
+networks:
+  backend2:
