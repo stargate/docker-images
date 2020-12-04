@@ -12,7 +12,10 @@ docker-compose up -d cass-2
 docker-compose up -d cass-3
 (docker-compose logs -f cass-1 &) | grep -q "is now part of the cluster"
 
+# this is where a cql script must be run
+# the following command is not the answer
 docker run --rm -it nuvo/docker-cqlsh cqlsh host.docker.internal 9045 --cqlversion=3.4.4 -u cassandra -p cassandra
+
 
 # Bring up keycloak for handling JWTs
 docker-compose up -d keycloak
