@@ -15,17 +15,17 @@ The `cqlshrc` file gives the docker-cqlsh image user permissions to insert the d
 
 `cqlsh_Dockerfile` and `cqlsh_entrypoint.sh` are WIP to create a cqlsh docker image to use with Stargate.
 
-Additional information on what the CQL script does:
+# Additional information on what the CQL script does:
 
-# Create some data
+## Create some data
 
-## Create a role in Cassandra
+### Create a role in Cassandra
 
 ```cql
 CREATE ROLE IF NOT EXISTS 'web_user' WITH PASSWORD = 'web_user' AND LOGIN = TRUE;
 ```
 
-## Insert some data into Cassandra
+### Insert some data into Cassandra
 
 ```cql
 CREATE KEYSPACE IF NOT EXISTS store WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':'1'};
@@ -36,7 +36,7 @@ INSERT INTO store.shopping_cart (userid, item_count, last_update_timestamp) VALU
 INSERT INTO store.shopping_cart (userid, item_count, last_update_timestamp) VALUES ('1234', 5, toTimeStamp(toDate(now())));
 ```
 
-## Grant role permissions to the table
+### Grant role permissions to the table
 
 ```cql
 CREATE ROLE IF NOT EXISTS 'web_user' WITH PASSWORD = 'web_user' AND LOGIN = TRUE;
