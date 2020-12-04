@@ -12,10 +12,10 @@ docker-compose up -d cass-2
 docker-compose up -d cass-3
 (docker-compose logs -f cass-1 &) | grep -q "is now part of the cluster"
 
-# this is where a cql script must be run
-# the following command is not the answer
-docker run --rm -it nuvo/docker-cqlsh cqlsh host.docker.internal 9045 --cqlversion=3.4.4 -u cassandra -p cassandra
-
+# this is where a cql script must be run to insert data and grant permissions
+docker run --rm -it -v /Users/lorina.poland/CLONES/stargate/docker-images/examples/stargate-jwt-auth/scripts:/scripts  \
+-v /Users/lorina.poland/CLONES/stargate/docker-images/examples/stargate-jwt-auth/cqlshrc:/.cassandra/cqlshrc  \
+--env CQLSH_HOST=host.docker.internal --env CQLSH_PORT=9045  nuvo/docker-cqlsh
 
 # Bring up keycloak for handling JWTs
 docker-compose up -d keycloak
