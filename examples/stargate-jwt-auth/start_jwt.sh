@@ -1,24 +1,22 @@
 #!/bin/sh
 
-COMPOSE_FILE=stargate-cass311-jwt.yml
-
 # Make sure cass-1, the seed node, is up before bringing up other nodes and stargate
-docker-compose -f stargate-cass311-jwt.yml up -d cass-1
+docker-compose up -d cass-1
 # Wait until the seed node is up before bringing up more nodes
 (docker-compose logs -f cass-1 &) | grep -q "Created default superuser role"
 
 # Bring up the 2nd C* node
-docker-compose -f stargate-cass311-jwt.yml up -d cass-2
+docker-compose up -d cass-2
 (docker-compose logs -f cass-1 &) | grep -q "is now part of the cluster"
 # Bring up the 3rd C* node
-#docker-compose -f stargate-cass311-jwt.yml up -d cass-3
-#(docker-compose logs -f cass-1 &) | grep -q "is now part of the cluster"
+docker-compose up -d cass-3
+(docker-compose logs -f cass-1 &) | grep -q "is now part of the cluster"
 
-# Bring up keycloak
-docker-compose -f stargate-cass311-jwt.yml up -d keycloak
+# Bring up keycloak for handling JWTs
+docker-compose up -d keycloak
 
 # Bring up the stargate
-docker-compose -f stargate-cass311-jwt.yml up -d stargate-jwt
+docker-compose up -d stargate-jwt
 # Wait until stargate is up before bringing up the metrics tools
 echo ""
 echo "Waiting for stargate to start up..."

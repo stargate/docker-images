@@ -5,7 +5,7 @@ services:
     image: cassandra:3.11.8
     container_name: cass-1
     networks:
-      - backend2
+      - backend
     ports:
       - 9044:9042
     mem_limit: 2G
@@ -18,7 +18,7 @@ services:
     image: cassandra:3.11.8
     container_name: cass-2
     networks:
-      - backend2
+      - backend
     mem_limit: 2G
     depends_on:
       - cass-1
@@ -31,7 +31,7 @@ services:
     image: cassandra:3.11.8
     container_name: cass-3
     networks:
-      - backend2
+      - backend
     mem_limit: 2G
     depends_on:
       - cass-1
@@ -46,7 +46,7 @@ services:
     depends_on: 
       - cass-1
     networks:
-      - backend2
+      - backend
     ports:
       - 8080:8080
       - 8081:8081
@@ -67,16 +67,16 @@ services:
     image: quay.io/keycloak/keycloak:11.0.2
     container_name: keycloak
     networks:
-      - backend2
+      - backend
     ports:
       - 4444:4444
       - 9990:9990
     environment:
+      - JAVA_OPTS=-Djboss.http.port=4444
       - KEYCLOAK_USER=admin
       - KEYCLOAK_PASSWORD=admin
       - KEYCLOAK_IMPORT=/tmp/stargate-realm.json
-      - JAVA_OPTS=-Djboss.http.port=4444
     volumes:
       - ./stargate-realm.json:/tmp/stargate-realm.json
 networks:
-  backend2:
+  backend:
