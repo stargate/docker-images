@@ -13,8 +13,6 @@ The `stargate-realm.json` file is used by the keycloak service.
 The CQL files in the `scripts` directory are mounted and run using a docker-cqlsh image.
 The `cqlshrc` file gives the docker-cqlsh image user permissions to insert the data.
 
-`cqlsh_Dockerfile` and `cqlsh_entrypoint.sh` are WIP to create a cqlsh docker image to use with Stargate.
-
 # Additional information on what the CQL script does:
 
 ## Create some data
