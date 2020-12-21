@@ -1,4 +1,10 @@
-FROM stargate-builder as builder
+FROM openjdk:8u252-slim
+
+RUN apt update -qq \
+    && apt install curl unzip iproute2 libaio1 -y \
+    && apt autoremove --yes \
+    && apt clean all \
+    && rm -rf /var/lib/apt/lists/*
 
 ARG STARGATE_VERSION=v1.0.1
 RUN curl -sL https://github.com/stargate/stargate/releases/download/${STARGATE_VERSION}/stargate-jars.zip > stargate-jars.zip \
