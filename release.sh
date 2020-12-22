@@ -7,8 +7,6 @@ if [ -z ${1+x} ]; then
    exit 1
 fi
 
-docker build -t stargate-builder -f ./Dockerfile .
-
 stargate_version=$1
 
 for script in $(find . -type f -name 'build.sh'); do
