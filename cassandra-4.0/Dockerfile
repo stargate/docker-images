@@ -1,7 +1,7 @@
 FROM openjdk:8u252-slim
 
 
-ARG STARGATE_VERSION=v1.0.6
+ARG STARGATE_VERSION=v1.0.7
 
 
 RUN apt update -qq \
