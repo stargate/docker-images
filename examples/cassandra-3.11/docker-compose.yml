@@ -1,10 +1,9 @@
-version: '3'
+version: '2'
 
 services:
   backend-1:
     image: cassandra:3.11.8
     container_name: backend-1
-    command: cassandra -Dcassandra.consistent.rangemovement=false
     networks:
       - backend
     ports:
@@ -18,7 +17,6 @@ services:
   backend-2:
     image: cassandra:3.11.8
     container_name: backend-2
-    command: cassandra -Dcassandra.consistent.rangemovement=false
     networks:
       - backend
     mem_limit: 2G
@@ -32,7 +30,6 @@ services:
   backend-3:
     image: cassandra:3.11.8
     container_name: backend-3
-    command: cassandra -Dcassandra.consistent.rangemovement=false
     networks:
       - backend
     mem_limit: 2G
