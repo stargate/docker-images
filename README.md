@@ -3,9 +3,9 @@
 ## docker compose
 
 [Examples directory](./examples) contains some [docker compose](https://docs.docker.com/compose/) files for stargate with different backends (3 nodes): 
-- [with Apache Cassandra 3.11](./examples/stargate-cass311.yml)
-- [with Apache Cassandra 4.0](./examples/stargate-cass40.yml)
-- [with DSE 6.8](./examples/stargate-dse68.yml)
+- [with Apache Cassandra 3.11](./examples/cassandra-3.11/docker-compose.yml)
+- [with Apache Cassandra 4.0](./examples/cassandra-4.0/docker-compose.yml)
+- [with DSE 6.8](./examples/dse-6.8/docker-compose.yml)
 
 
 ### Configuration
