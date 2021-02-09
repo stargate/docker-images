@@ -10,3 +10,6 @@ prometheus.yml: File that contains parameters for setting interactions between p
 
 cqlsh-commands.txt: Commands that can be used to run a Cassandra Query Language (CQL) shell, cqlsh, in a container
 for use with the multi-container environment.
+
+**Be aware that running more than one of these multi-container environments on one host may require
+changing the port mapping to be changed to avoid conflicts on the host machine.**
