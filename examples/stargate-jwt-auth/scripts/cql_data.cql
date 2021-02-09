@@ -1,7 +1,7 @@
-# create role for demos
+// create role for demos
 CREATE ROLE IF NOT EXISTS 'web_user' WITH PASSWORD = 'web_user' AND LOGIN = TRUE;
 
-# create REST API example
+// create REST API example
 CREATE KEYSPACE IF NOT EXISTS store WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':'1'};
 
 CREATE TABLE IF NOT EXISTS store.shopping_cart (userid text PRIMARY KEY, item_count int, last_update_timestamp timestamp);
@@ -12,7 +12,7 @@ INSERT INTO store.shopping_cart (userid, item_count, last_update_timestamp) VALU
 GRANT MODIFY ON TABLE store.shopping_cart TO web_user;
 GRANT SELECT ON TABLE store.shopping_cart TO web_user;
 
-# create GraphQL example
+// create GraphQL example
 CREATE KEYSPACE IF NOT EXISTS library WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':'1'};
 
 CREATE TABLE IF NOT EXISTS library.books (title text PRIMARY KEY, author text);
