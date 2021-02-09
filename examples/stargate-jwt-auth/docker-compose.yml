@@ -41,7 +41,7 @@ services:
       - CASSANDRA_SEEDS=cass-1
       - CASSANDRA_CLUSTER_NAME=backend-cluster
   stargate-jwt:
-    image: jwt-sg:latest
+    image: stargate:${SGTAG}
     container_name: stargate-jwt
     depends_on: 
       - cass-1
@@ -64,7 +64,7 @@ services:
       - ENABLE_AUTH=true
       - SIMPLE_SNITCH=true
   keycloak:
-    image: quay.io/keycloak/keycloak:11.0.2
+    image: quay.io/keycloak/keycloak:${KCTAG}
     container_name: keycloak
     networks:
       - backend

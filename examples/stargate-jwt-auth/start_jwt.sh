@@ -2,6 +2,7 @@
 
 export CASSTAG=3.11.8
 export SGTAG=v1.0.7
+export KCTAG=11.0.2
 
 # Make sure cass-1, the seed node, is up before bringing up other nodes and stargate
 docker-compose up -d cass-1
