@@ -53,7 +53,7 @@ services:
     environment:
       - JAVA_OPTS="-Xmx2G"
       - CLUSTER_NAME=c4-${CASSTAG}-cluster
-      - CLUSTER_VERSION=3.11
+      - CLUSTER_VERSION=4.0
       - SEED=backend-1
       - RACK_NAME=rack1
       - DATACENTER_NAME=dc1
