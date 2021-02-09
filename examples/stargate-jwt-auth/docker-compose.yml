@@ -52,7 +52,7 @@ services:
       - 9049:9042
     mem_limit: 2G
     environment:
-      - JAVA_OPTS=-XX:+CrashOnOutOfMemoryError -Xmx750M -Xms64M -Dstargate.auth_id=AuthJwtService -Dstargate.auth.jwt_provider_url=http://keycloak:4444/auth/realms/stargate/protocol/openid-connect/certs
+      - JAVA_OPTS=-XX:+CrashOnOutOfMemoryError -Xmx750M -Xms64M -Dstargate.auth_id=AuthJwtService -Dstargate.cql_use_auth_service=true -Dstargate.auth.jwt_provider_url=http://keycloak:4444/auth/realms/stargate/protocol/openid-connect/certs
       - CLUSTER_NAME=sg-jwt-${CASSTAG}
       - CLUSTER_VERSION=3.11
       - SEED=cass-1
