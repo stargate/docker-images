@@ -13,7 +13,7 @@ docker-compose up -d backend-1
 
 # Bring up the 2nd C* node
 
-#docker-compose up -f $COMPOSE_FILE -d backend-2
+docker-compose up -f $COMPOSE_FILE -d backend-2
 (docker-compose logs -f backend-2 &) | grep -q "is now part of the cluster"
 
 # Bring up the 3rd C* node
