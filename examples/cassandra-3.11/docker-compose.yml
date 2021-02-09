@@ -49,7 +49,6 @@ services:
       - 8081:8081
       - 8082:8082
       - 8084:8084
-      - 8085:8085
     mem_limit: 2G
     environment:
       - JAVA_OPTS="-Xmx2G"
