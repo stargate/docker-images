@@ -1,5 +1,8 @@
 #!/bin/sh
 
+export CASSTAG=3.11.8
+export SGTAG=v1.0.7
+
 # Make sure cass-1, the seed node, is up before bringing up other nodes and stargate
 docker-compose up -d cass-1
 # Wait until the seed node is up before bringing up more nodes

@@ -2,7 +2,7 @@ version: '2'
 
 services:
   cass-1:
-    image: cassandra:3.11.8
+    image: cassandra:${CASSTAG}
     container_name: cass-1
     networks:
       - backend
@@ -15,7 +15,7 @@ services:
       - CASSANDRA_SEEDS=cass-1
       - CASSANDRA_CLUSTER_NAME=backend-cluster
   cass-2:
-    image: cassandra:3.11.8
+    image: cassandra:${CASSTAG}
     container_name: cass-2
     networks:
       - backend
@@ -28,7 +28,7 @@ services:
       - CASSANDRA_SEEDS=cass-1
       - CASSANDRA_CLUSTER_NAME=backend-cluster
   cass-3:
-    image: cassandra:3.11.8
+    image: cassandra:${CASSTAG}
     container_name: cass-3
     networks:
       - backend
