@@ -3,7 +3,6 @@ version: '2'
 services:
   cass-1:
     image: cassandra:${CASSTAG}
-    container_name: cass-1
     networks:
       - backend
     ports:
@@ -13,10 +12,9 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - CASSANDRA_SEEDS=cass-1
-      - CASSANDRA_CLUSTER_NAME=backend-cluster
+      - CASSANDRA_CLUSTER_NAME=sg-jwt-${CASSTAG}
   cass-2:
     image: cassandra:${CASSTAG}
-    container_name: cass-2
     networks:
       - backend
     mem_limit: 2G
@@ -26,10 +24,9 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - CASSANDRA_SEEDS=cass-1
-      - CASSANDRA_CLUSTER_NAME=backend-cluster
+      - CASSANDRA_CLUSTER_NAME=sg-jwt-${CASSTAG}
   cass-3:
     image: cassandra:${CASSTAG}
-    container_name: cass-3
     networks:
       - backend
     mem_limit: 2G
@@ -39,7 +36,7 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - CASSANDRA_SEEDS=cass-1
-      - CASSANDRA_CLUSTER_NAME=backend-cluster
+      - CASSANDRA_CLUSTER_NAME=sg-jwt-${CASSTAG}
   stargate-jwt:
     image: stargate:${SGTAG}
     container_name: stargate-jwt
@@ -56,7 +53,7 @@ services:
     mem_limit: 2G
     environment:
       - JAVA_OPTS=-XX:+CrashOnOutOfMemoryError -Xmx750M -Xms64M -Dstargate.auth_id=AuthJwtService -Dstargate.auth.jwt_provider_url=http://keycloak:4444/auth/realms/stargate/protocol/openid-connect/certs
-      - CLUSTER_NAME=backend-cluster
+      - CLUSTER_NAME=sg-jwt-${CASSTAG}
       - CLUSTER_VERSION=3.11
       - SEED=cass-1
       - RACK_NAME=rack1
