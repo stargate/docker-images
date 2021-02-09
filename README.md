@@ -6,7 +6,10 @@
 - [with Apache Cassandra 3.11](./examples/cassandra-3.11/docker-compose.yml)
 - [with Apache Cassandra 4.0](./examples/cassandra-4.0/docker-compose.yml)
 - [with DSE 6.8](./examples/dse-6.8/docker-compose.yml)
+- [add Apache Zeppelin to any environment](./examples/add_zeppelin)
+- [with Apache Cassanda 3.11, Prometheus, and Grafana](./examples/stargate-prometheus-grafana/docker-compose.yml)
 
+Each example also has a `start_***.sh` to aid starting the docker-compose environment.
 
 ### Configuration
 
