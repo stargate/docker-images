@@ -38,7 +38,7 @@ services:
       - CASSANDRA_SEEDS=backend-1
       - CASSANDRA_CLUSTER_NAME=c4-${CASSTAG}-cluster
   stargate:
-    image: stargateio/stargate-3_11:${SGTAG}
+    image: stargateio/stargate-4_0:${SGTAG}
     depends_on: 
       - backend-1
     networks:
