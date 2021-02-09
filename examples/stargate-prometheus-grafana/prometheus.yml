@@ -26,4 +26,4 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-    - targets: ['stargate:8085']
+    - targets: ['stargate:8084']

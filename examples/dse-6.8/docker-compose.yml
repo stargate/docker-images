@@ -2,8 +2,7 @@ version: '2'
 
 services:
   backend-1:
-    image: datastax/dse-server:6.8.4
-    container_name: backend-1
+    image: datastax/dse-server:${DSETAG}
     networks:
       - backend
     ports:
@@ -13,13 +12,12 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - SEEDS=backend-1
-      - CLUSTER_NAME=backend
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
       - DC=dc1
       - RACK=rack1
       - DS_LICENSE=accept
   backend-2:
-    image: datastax/dse-server:6.8.4
-    container_name: backend-2
+    image: datastax/dse-server:${DSETAG}
     networks:
       - backend
     mem_limit: 2G
@@ -29,13 +27,12 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - SEEDS=backend-1
-      - CLUSTER_NAME=backend
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
       - DC=dc1
       - RACK=rack1
       - DS_LICENSE=accept
   backend-3:
-    image: datastax/dse-server:6.8.4
-    container_name: backend-3
+    image: datastax/dse-server:${DSETAG}
     networks:
       - backend
     mem_limit: 2G
@@ -45,22 +42,25 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - SEEDS=backend-1
-      - CLUSTER_NAME=backend
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
       - DC=dc1
       - DS_LICENSE=accept
   stargate:
-    image: stargateio/stargate-dse-68:v0.0.5
-    container_name: stargate
+    image: stargateio/stargate-dse-68:${SGTAG}
     depends_on: 
       - backend-1
     networks:
       - backend
     ports:
       - 9045:9042
+      - 8080:8080
+      - 8081:8081
+      - 8082:8082
+      - 8084:8084
     mem_limit: 2G
     environment:
       - JAVA_OPTS="-Xmx2G"
-      - CLUSTER_NAME=backend
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
       - CLUSTER_VERSION=6.8
       - DSE=1
       - SEED=backend-1
