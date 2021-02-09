@@ -16,6 +16,7 @@ docker-compose up -d backend-3
 
 # Bring up the stargate
 docker-compose up -d stargate
+
 # Wait until stargate is up before bringing up the metrics tools
 echo ""
 echo "Waiting for stargate to start up..."
