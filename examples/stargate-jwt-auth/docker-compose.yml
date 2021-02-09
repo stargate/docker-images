@@ -13,8 +13,6 @@ services:
       - MAX_HEAP_SIZE=1024M
       - CASSANDRA_SEEDS=cass-1
       - CASSANDRA_CLUSTER_NAME=sg-jwt-${CASSTAG}
-    volumes:
-      - ./cassandra.yaml:/etc/cassandra/cassandra.yaml
   cass-2:
     image: cassandra:${CASSTAG}
     networks:

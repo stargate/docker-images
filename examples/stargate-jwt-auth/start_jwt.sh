@@ -22,10 +22,10 @@ docker-compose up -d cass-1
 #(docker-compose logs -f cass-1 &) | grep -q "is now part of the cluster"
 
 # Run a cql script to insert data and grant permissions
-echo "Use nuvo/docker-cqlsh to run CQL script"
-docker run --rm -it -v $SG_AUTH_DIR/scripts:/scripts  \
--v $SG_AUTH_DIR/cqlshrc:/.cassandra/cqlshrc  \
---env CQLSH_HOST=host.docker.internal --env CQLSH_PORT=9048  nuvo/docker-cqlsh
+#echo "Use nuvo/docker-cqlsh to run CQL script"
+#docker run --rm -it -v $SG_AUTH_DIR/scripts:/scripts  \
+#-v $SG_AUTH_DIR/cqlshrc:/.cassandra/cqlshrc  \
+#--env CQLSH_HOST=host.docker.internal --env CQLSH_PORT=9049  nuvo/docker-cqlsh
 
 # Bring up keycloak for handling JWTs
 echo "Start Keycloak"
@@ -41,4 +41,10 @@ while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://localhost:8082/healt
     printf '.' 
     sleep 5
 done
+
+# Run a cql script to insert data and grant permissions
+echo "Use nuvo/docker-cqlsh to run CQL script"
+docker run --rm -it -v $SG_AUTH_DIR/scripts:/scripts  \
+-v $SG_AUTH_DIR/cqlshrc:/.cassandra/cqlshrc  \
+--env CQLSH_HOST=host.docker.internal --env CQLSH_PORT=9049  nuvo/docker-cqlsh
 
