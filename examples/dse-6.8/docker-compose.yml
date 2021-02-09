@@ -2,8 +2,8 @@ version: '2'
 
 services:
   backend-1:
-    image: cassandra:3.11.8
-    container_name: backend-1
+    image: datastax/dse-server:${DSETAG}
+    #container_name: backend-1
     networks:
       - backend
     ports:
@@ -12,11 +12,14 @@ services:
     environment:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
-      - CASSANDRA_SEEDS=backend-1
-      - CASSANDRA_CLUSTER_NAME=backend
+      - SEEDS=backend-1
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
+      - DC=dc1
+      - RACK=rack1
+      - DS_LICENSE=accept
   backend-2:
-    image: cassandra:3.11.8
-    container_name: backend-2
+    image: datastax/dse-server:${DSETAG}
+    #container_name: backend-2
     networks:
       - backend
     mem_limit: 2G
@@ -25,11 +28,14 @@ services:
     environment:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
-      - CASSANDRA_SEEDS=backend-1
-      - CASSANDRA_CLUSTER_NAME=backend
+      - SEEDS=backend-1
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
+      - DC=dc1
+      - RACK=rack1
+      - DS_LICENSE=accept
   backend-3:
-    image: cassandra:3.11.8
-    container_name: backend-3
+    image: datastax/dse-server:${DSETAG}
+    #container_name: backend-3
     networks:
       - backend
     mem_limit: 2G
@@ -38,10 +44,12 @@ services:
     environment:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
-      - CASSANDRA_SEEDS=backend-1
-      - CASSANDRA_CLUSTER_NAME=backend
+      - SEEDS=backend-1
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
+      - DC=dc1
+      - DS_LICENSE=accept
   stargate:
-    image: stargateio/stargate-3_11:v1.0.0
+    image: stargateio/stargate-dse-68:${SGTAG}
     container_name: stargate
     depends_on: 
       - backend-1
@@ -56,8 +64,9 @@ services:
     mem_limit: 2G
     environment:
       - JAVA_OPTS="-Xmx2G"
-      - CLUSTER_NAME=backend
-      - CLUSTER_VERSION=3.11
+      - CLUSTER_NAME=dse-${DSETAG}-cluster
+      - CLUSTER_VERSION=6.8
+      - DSE=1
       - SEED=backend-1
       - RACK_NAME=rack1
       - DATACENTER_NAME=dc1

@@ -2,8 +2,8 @@ version: '2'
 
 services:
   backend-1:
-    image: cassandra:4.0
-    container_name: backend-1
+    image: cassandra:${CASSTAG}
+    #container_name: backend-1
     networks:
       - backend
     ports:
@@ -13,10 +13,10 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - CASSANDRA_SEEDS=backend-1
-      - CASSANDRA_CLUSTER_NAME=backend
+      - CASSANDRA_CLUSTER_NAME=c3-${CASSTAG}-cluster
   backend-2:
-    image: cassandra:4.0
-    container_name: backend-2
+    image: cassandra:${CASSTAG}
+    #container_name: backend-2
     networks:
       - backend
     mem_limit: 2G
@@ -26,10 +26,10 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - CASSANDRA_SEEDS=backend-1
-      - CASSANDRA_CLUSTER_NAME=backend
+      - CASSANDRA_CLUSTER_NAME=c3-${CASSTAG}-cluster
   backend-3:
-    image: cassandra:4.0
-    container_name: backend-3
+    image: cassandra:${CASSTAG}
+    #container_name: backend-3
     networks:
       - backend
     mem_limit: 2G
@@ -39,10 +39,10 @@ services:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
       - CASSANDRA_SEEDS=backend-1
-      - CASSANDRA_CLUSTER_NAME=backend
+      - CASSANDRA_CLUSTER_NAME=c3-${CASSTAG}-cluster
   stargate:
-    image: stargateio/stargate-4_0:v1.0.0
-    container_name: stargate
+    image: stargateio/stargate-3_11:${SGTAG}
+    #container_name: stargate
     depends_on: 
       - backend-1
     networks:
@@ -53,11 +53,12 @@ services:
       - 8081:8081
       - 8082:8082
       - 8084:8084
+      - 8085:8085
     mem_limit: 2G
     environment:
       - JAVA_OPTS="-Xmx2G"
-      - CLUSTER_NAME=backend
-      - CLUSTER_VERSION=4.0
+      - CLUSTER_NAME=c3-${CASSTAG}-cluster
+      - CLUSTER_VERSION=3.11
       - SEED=backend-1
       - RACK_NAME=rack1
       - DATACENTER_NAME=dc1
