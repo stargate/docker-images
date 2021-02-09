@@ -3,7 +3,6 @@ version: '2'
 services:
   backend-1:
     image: datastax/dse-server:${DSETAG}
-    #container_name: backend-1
     networks:
       - backend
     ports:
@@ -19,7 +18,6 @@ services:
       - DS_LICENSE=accept
   backend-2:
     image: datastax/dse-server:${DSETAG}
-    #container_name: backend-2
     networks:
       - backend
     mem_limit: 2G
@@ -35,7 +33,6 @@ services:
       - DS_LICENSE=accept
   backend-3:
     image: datastax/dse-server:${DSETAG}
-    #container_name: backend-3
     networks:
       - backend
     mem_limit: 2G
@@ -50,7 +47,6 @@ services:
       - DS_LICENSE=accept
   stargate:
     image: stargateio/stargate-dse-68:${SGTAG}
-    container_name: stargate
     depends_on: 
       - backend-1
     networks:

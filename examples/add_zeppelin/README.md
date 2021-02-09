@@ -5,7 +5,6 @@ To `docker-compose.yaml`:
 ```
   zeppelin:
     image: apache/zeppelin:${ZEPPTAG}
-    #container_name: zeppelin
     depends_on:
       - backend-1
     networks:
