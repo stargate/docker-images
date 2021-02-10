@@ -1,5 +1,7 @@
 This directory includes an example to start a keycloak server along with a Cassandra cluster and a Stargate node.
 
+Documentation on this feature can be found at: https://stargate.io/docs/stargate/0.1/developers-guide/authnz.html[Auth API].
+
 # Run demo
 
 Use the `start_jwt.sh` shell script to run `docker-compose.yml` to start all the services, along with a `docker run` command
