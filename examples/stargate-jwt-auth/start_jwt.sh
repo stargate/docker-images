@@ -31,6 +31,37 @@ docker-compose up -d cass-1
 echo "Start Keycloak"
 docker-compose up -d keycloak
 
+# Create a keycloak token and add a user testuser1
+echo "* Request for authorization"
+TOKEN=$(curl -s --data "username=admin&password=admin&grant_type=password&client_id=admin-cli" http://localhost:4444/auth/realms/master/protocol/openid-connect/token | jq -r '.access_token')
+
+echo "\n"
+echo " * user creation\n"
+curl -L -X POST 'http://localhost:4444/auth/admin/realms/stargate/users' \
+-H 'Content-Type: application/json' \
+-H "Authorization: bearer $TOKEN" \
+--data-raw '{
+    "username": "testuser1",
+    "email": "foo@bar.com",
+    "enabled": true,
+    "emailVerified": true,
+    "attributes": {
+        "userid": [
+            "9876"
+        ],
+        "role": [
+            "web_user"
+        ]
+    },
+    "credentials": [
+        {
+            "type": "password",
+            "value": "testuser1",
+            "temporary": "false"
+        }
+    ]
+}
+
 # Bring up the stargate
 echo "start Stargate node"
 docker-compose up -d stargate-jwt
