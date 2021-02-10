@@ -43,3 +43,7 @@ CREATE ROLE IF NOT EXISTS 'web_user' WITH PASSWORD = 'web_user' AND LOGIN = TRUE
 GRANT MODIFY ON TABLE store.shopping_cart TO web_user;
 GRANT SELECT ON TABLE store.shopping_cart TO web_user;
 ```
+
+## Smoke test
+
+Run the included `smoke_test.sh` to test if the set-up is correct.
