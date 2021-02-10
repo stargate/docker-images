@@ -1,6 +1,6 @@
 This directory includes an example to start a keycloak server along with a Cassandra cluster and a Stargate node.
 
-Documentation on this feature can be found at: https://stargate.io/docs/stargate/0.1/developers-guide/authnz.html[Auth API].
+Documentation on this feature can be found at: [Auth API](https://stargate.io/docs/stargate/0.1/developers-guide/authnz.html).
 
 # Run demo
 
