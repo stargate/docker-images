@@ -8,6 +8,7 @@
 - [with DSE 6.8](./examples/dse-6.8/docker-compose.yml)
 - [add Apache Zeppelin to any environment](./examples/add_zeppelin)
 - [with Apache Cassanda 3.11, Prometheus, and Grafana](./examples/stargate-prometheus-grafana/docker-compose.yml)
+- [with Apache Cassanda 3.11 and Keycloak, for JWT-based authentication ](./examples/stargate-jwt-auth)
 
 Each example also has a `start_***.sh` to aid starting the docker-compose environment.
 
