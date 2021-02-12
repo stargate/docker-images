@@ -1,6 +1,6 @@
 FROM openjdk:8u252-slim
 
-ARG STARGATE_VERSION=v1.0.7
+ARG STARGATE_VERSION=v1.0.8
 
 RUN apt update -qq \
     && apt install curl unzip iproute2 libaio1 -y \
