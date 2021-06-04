@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export CASSTAG=3.11.10
-export SGTAG=v1.0.25
+export SGTAG=v1.0.26
 export KCTAG=latest
 
 SG_AUTH_DIR=/Users/lorina.poland/CLONES/stargate/docker-images/examples/stargate-jwt-auth
