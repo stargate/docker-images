@@ -4,7 +4,14 @@ export CASSTAG=3.11.10
 export SGTAG=v1.0.27
 export KCTAG=latest
 
-SG_AUTH_DIR=/Users/lorina.poland/CLONES/stargate/docker-images/examples/stargate-jwt-auth
+SG_AUTH_DIR=$PWD
+
+# Check if jq is installed
+if ! [ -x "$(command -v jq)" ]; then
+  echo 'Error: jq is not installed.' >&2
+  exit 1
+fi
+
 
 # Make sure cass-1, the seed node, is up before bringing up other nodes and stargate
 echo "Start 1st Cassandra node"
@@ -60,7 +67,7 @@ curl -L -X POST 'http://localhost:4444/auth/admin/realms/stargate/users' \
             "temporary": "false"
         }
     ]
-}
+}'
 
 # Bring up the stargate
 echo "start Stargate node"
