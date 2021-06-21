@@ -1,4 +1,4 @@
-FROM openjdk:8u252-slim
+FROM openjdk:8u292-slim
 
 ARG STARGATE_VERSION=v1.0.27
 
