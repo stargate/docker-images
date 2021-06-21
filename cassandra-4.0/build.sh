@@ -16,7 +16,7 @@ echo "Building $DOCKER_IMAGE"
 docker buildx build --push \
 --tag ${DOCKER_IMAGE}:${stargate_version} \
 --file Dockerfile \
---platform linux/amd64 .
+--platform linux/amd64,linux/arm64 .
 
 echo "Inspecting $DOCKER_IMAGE"
 docker buildx imagetools inspect ${DOCKER_IMAGE}:${stargate_version}
