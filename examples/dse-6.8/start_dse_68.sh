@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export DSETAG=6.8.13
-export SGTAG=v1.0.44
+export SGTAG=v1.0.45
 
 # Make sure backend-1, the seed node, is up before bringing up other nodes and stargate
 
