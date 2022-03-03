@@ -45,11 +45,18 @@ services:
     networks:
       - backend
     ports:
+      # cql
+      - 9045:9042
+      # graphql
       - 8080:8080
+      # auth
       - 8081:8081
+      # REST
       - 8082:8082
+      # health
       - 8084:8084
-      - 9049:9042
+      # grpc
+      - 8090:8090
     mem_limit: 2G
     environment:
       - JAVA_OPTS=-XX:+CrashOnOutOfMemoryError -Xmx750M -Xms64M -Dstargate.auth_id=AuthJwtService -Dstargate.cql_use_auth_service=true -Dstargate.auth.jwt_provider_url=http://keycloak:4444/auth/realms/stargate/protocol/openid-connect/certs

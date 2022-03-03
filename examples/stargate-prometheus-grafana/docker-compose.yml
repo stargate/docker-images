@@ -48,11 +48,18 @@ services:
     networks:
       - backend
     ports:
+      # cql
       - 9045:9042
+      # graphql
       - 8080:8080
+      # auth
       - 8081:8081
+      # REST
       - 8082:8082
+      # health
       - 8084:8084
+      # grpc
+      - 8090:8090
     mem_limit: 2G
     environment:
       - JAVA_OPTS="-Xmx2G"
