@@ -1,4 +1,8 @@
-FROM openjdk:8u292-slim
+FROM openjdk:8-slim
+
+RUN set -x \
+    && groupadd -r stargate --gid=999 \
+    && useradd -r -g stargate -d /stargate --uid=999 stargate
 
 ARG STARGATE_VERSION=v1.0.51
 
@@ -7,6 +11,9 @@ RUN apt update -qq \
     && apt autoremove --yes \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
+
+USER stargate
+WORKDIR /stargate
 
 RUN curl -L https://github.com/stargate/stargate/releases/download/${STARGATE_VERSION}/stargate-jars.zip > stargate-jars.zip \
     && unzip stargate-jars -x "*/persistence-*" \
