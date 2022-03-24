@@ -12,6 +12,9 @@ RUN apt update -qq \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir /stargate \
+    && chown -R stargate:stargate /stargate
+
 USER stargate
 WORKDIR /stargate
 
