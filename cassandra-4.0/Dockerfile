@@ -4,7 +4,7 @@ RUN set -x \
     && groupadd -r stargate --gid=999 \
     && useradd -r -g stargate -d /stargate --uid=999 stargate
 
-ARG STARGATE_VERSION=v1.0.58
+ARG STARGATE_VERSION=v1.0.59
 
 RUN apt update -qq \
     && apt install curl unzip iproute2 libaio1 -y \
