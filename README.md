@@ -1,5 +1,10 @@
 # docker-images
 
+Docker images for Stargate v1. 
+
+Note:
+For Stargate v2, Docker images are built in the [main repository](https://github.com/stargate/stargate), with examples under the [docker-compose directory](https://github.com/stargate/stargate/tree/main/docker-compose).
+
 ## docker compose
 
 [Examples directory](./examples) contains some [docker compose](https://docs.docker.com/compose/) files for stargate with different backends (3 nodes): 
