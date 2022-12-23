@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export CASSTAG=4.0.3
-export SGTAG=v1.0.70
+export SGTAG=v1.0.71
 
 # Make sure backend-1, the seed node, is up before bringing up other nodes and stargate
 
