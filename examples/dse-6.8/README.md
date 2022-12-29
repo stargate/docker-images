@@ -1,3 +1,5 @@
+# Docker Compose scripts for Stargate with DSE 6.8
+
 Three files to use docker-compose to start a small DataStax Enterprise 6.8 cluster and one Stargate node:
 
 * docker-compose.yaml: File that contains all parameters for starting multi-container environment.

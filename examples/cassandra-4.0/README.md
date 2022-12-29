@@ -1,3 +1,5 @@
+# Docker Compose scripts for Stargate with Cassandra 4.0
+
 Three files to use docker-compose to start a small Cassandra 4.0 cluster and one Stargate node:
 
 * docker-compose.yaml: File that contains all parameters for starting multi-container environment.

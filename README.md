@@ -5,6 +5,8 @@ Docker images for Stargate v1.
 Note:
 For Stargate v2, Docker images are built in the [main repository](https://github.com/stargate/stargate), with examples under the [docker-compose directory](https://github.com/stargate/stargate/tree/main/docker-compose).
 
+Warning: Both the Stargate v1 release series and support for Cassandra 3.11 are considered deprecated. Stargate v1 will be unsupported as of the v3 release, which will not include support for Cassandra 3.11: [details](https://github.com/stargate/stargate/discussions/2242).
+
 ## docker compose
 
 [Examples directory](./examples) contains some [docker compose](https://docs.docker.com/compose/) files for stargate with different backends (3 nodes): 
