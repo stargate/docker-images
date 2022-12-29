@@ -11,4 +11,4 @@ Three files to use docker-compose to start a small Cassandra 3.11 cluster and on
 **Be aware that running more than one of these multi-container environments on one host may require 
 changing the port mapping to be changed to avoid conflicts on the host machine.**
 
-Warning: Support for Cassandra 3.11 is considered deprecated and will be removed in the Stargate v3 release: [details](https://github.com/stargate/stargate/discussions/2242).
+> **Warning:** Support for Cassandra 3.11 is considered deprecated and will be removed in the Stargate v3 release: [details](https://github.com/stargate/stargate/discussions/2242).
