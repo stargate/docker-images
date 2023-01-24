@@ -1,4 +1,4 @@
-FROM openjdk:8-slim
+FROM adoptopenjdk/openjdk8:jre8u352-b08 as base
 
 RUN set -x \
     && groupadd -r stargate --gid=999 \
@@ -7,7 +7,7 @@ RUN set -x \
 ARG STARGATE_VERSION=v1.0.72
 
 RUN apt update -qq \
-    && apt install curl unzip iproute2 libaio1 -y \
+    && apt install curl unzip iproute2 libaio1 libjemalloc2 -y \
     && apt autoremove --yes \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
