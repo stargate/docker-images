@@ -8,6 +8,10 @@ services:
     ports:
       - 9044:9042
     mem_limit: 2G
+    cap_add:
+      - IPC_LOCK
+    ulimits:
+      memlock: -1
     environment:
       - HEAP_NEWSIZE=128M
       - MAX_HEAP_SIZE=1024M
@@ -21,6 +25,10 @@ services:
     networks:
       - backend
     mem_limit: 2G
+    cap_add:
+      - IPC_LOCK
+    ulimits:
+      memlock: -1
     depends_on:
       - backend-1
     environment:
@@ -36,6 +44,10 @@ services:
     networks:
       - backend
     mem_limit: 2G
+    cap_add:
+      - IPC_LOCK
+    ulimits:
+      memlock: -1
     depends_on:
       - backend-2
     environment:
@@ -65,6 +77,10 @@ services:
       # grpc
       - 8090:8090
     mem_limit: 2G
+    cap_add:
+      - IPC_LOCK
+    ulimits:
+      memlock: -1
     environment:
       - JAVA_OPTS="-Xmx2G"
       - CLUSTER_NAME=dse-${DSETAG}-cluster
