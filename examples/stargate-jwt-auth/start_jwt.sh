@@ -1,7 +1,7 @@
 #!/bin/sh
 
 export CASSTAG=3.11.12
-export SGTAG=v1.0.75
+export SGTAG=v1.0.76
 export KCTAG=latest
 
 SG_AUTH_DIR=$PWD
